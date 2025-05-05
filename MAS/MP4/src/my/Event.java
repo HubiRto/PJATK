@@ -3,6 +3,7 @@ package my;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Event {
     private String name;
@@ -23,7 +24,7 @@ public class Event {
     }
 
     public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Event name cannot be empty");
         }
         this.name = name;
@@ -80,7 +81,6 @@ public class Event {
             throw new IllegalArgumentException("Participant cannot be null");
         }
 
-        // Custom business constraint: participant must be available on event dates
         if (!participant.isAvailableFor(this)) {
             throw new IllegalArgumentException(
                     "Participant " + participant.getName() + " is not available for this event date range");

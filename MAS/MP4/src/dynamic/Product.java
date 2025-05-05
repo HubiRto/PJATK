@@ -7,7 +7,7 @@ public class Product {
     private static final double MAX_PRICE_INCREASE_PERCENT = 20.0;
 
     public Product(String name, double price) {
-        this.name = name;
+        setName(name);
         setPrice(price);
     }
 
@@ -16,6 +16,9 @@ public class Product {
     }
 
     public void setName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
         this.name = name;
     }
 

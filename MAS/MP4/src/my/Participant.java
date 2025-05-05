@@ -21,7 +21,7 @@ public class Participant {
     }
 
     public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Participant name cannot be empty");
         }
         this.name = name;
@@ -32,7 +32,7 @@ public class Participant {
     }
 
     public void setEmail(String email) {
-        if (email == null || email.trim().isEmpty()) {
+        if (email == null || email.isBlank()) {
             throw new IllegalArgumentException("Participant email cannot be empty");
         }
         this.email = email;
@@ -47,7 +47,6 @@ public class Participant {
             throw new IllegalArgumentException("Event cannot be null");
         }
 
-        // Custom business constraint: participant must be available for event dates
         if (!isAvailableFor(event)) {
             throw new IllegalArgumentException(
                     "Participant is not available for event " + event.getName() + " date range");
@@ -78,7 +77,6 @@ public class Participant {
             throw new IllegalArgumentException("Dates cannot be null");
         }
 
-        // Validate dates (custom constraint)
         if (toDate.isBefore(fromDate)) {
             throw new IllegalArgumentException("End date must be after or equal to start date");
         }
@@ -87,15 +85,12 @@ public class Participant {
         unavailabilityPeriods.add(period);
     }
 
-    // Custom business logic to check availability
     public boolean isAvailableFor(Event event) {
         if (event == null || event.getStartDate() == null || event.getEndDate() == null) {
             return false;
         }
 
-        // Check if event overlaps with any unavailability period
         for (UnavailabilityPeriod period : unavailabilityPeriods) {
-            // Check for overlap
             if (!(event.getEndDate().isBefore(period.getFromDate()) ||
                     event.getStartDate().isAfter(period.getToDate()))) {
                 return false;

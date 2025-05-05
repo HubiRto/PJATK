@@ -17,7 +17,7 @@ public class Book {
     }
 
     public void setTitle(String title) {
-        if (title == null || title.trim().isEmpty()) {
+        if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Book title cannot be empty");
         }
         this.title = title;
@@ -28,7 +28,7 @@ public class Book {
     }
 
     public void setAuthor(String author) {
-        if (author == null || author.trim().isEmpty()) {
+        if (author == null || author.isBlank()) {
             throw new IllegalArgumentException("Book author cannot be empty");
         }
         this.author = author;

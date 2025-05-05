@@ -19,7 +19,7 @@ public class Product {
     }
 
     public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Product name cannot be empty");
         }
         this.name = name;

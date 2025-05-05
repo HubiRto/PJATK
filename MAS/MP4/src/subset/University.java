@@ -18,7 +18,7 @@ public class University {
     }
 
     public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("University name cannot be empty");
         }
         this.name = name;
@@ -44,9 +44,7 @@ public class University {
             throw new IllegalArgumentException("Student cannot be null");
         }
 
-        // Check if the student is an honor student
         if (honorStudents.contains(student)) {
-            // Remove from honor students first
             removeHonorStudent(student);
         }
 
@@ -64,7 +62,6 @@ public class University {
             throw new IllegalArgumentException("Student cannot be null");
         }
 
-        // Subset constraint - a student must be in the students list
         if (!students.contains(student)) {
             throw new IllegalArgumentException(
                     "Cannot add honor student. The student must be enrolled in the university first.");

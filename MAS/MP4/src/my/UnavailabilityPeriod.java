@@ -11,7 +11,6 @@ public class UnavailabilityPeriod {
             throw new IllegalArgumentException("Dates cannot be null");
         }
 
-        // Validate dates (custom constraint)
         if (toDate.isBefore(fromDate)) {
             throw new IllegalArgumentException("End date must be after or equal to start date");
         }

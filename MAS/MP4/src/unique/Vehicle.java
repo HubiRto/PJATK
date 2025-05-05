@@ -49,10 +49,6 @@ public class Vehicle {
             throw new IllegalArgumentException("Registration number cannot be empty");
         }
 
-        if (this.registrationNumber != null) {
-            this.registrationNumber = null;
-        }
-
         if (extentContains(registrationNumber)) {
             throw new IllegalArgumentException("Registration number already exists");
         }
