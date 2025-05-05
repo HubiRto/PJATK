@@ -46,7 +46,6 @@ public class Employee {
             return;
         }
 
-        // XOR constraint check - cannot have a part-time company
         if (this.partTimeCompany != null && this.partTimeCompany != company) {
             throw new IllegalArgumentException(
                     "Employee is already working part-time at " + this.partTimeCompany.getName() + ". " +
@@ -102,6 +101,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return name + " (" + email + ")";
+        return "Employee(\u001B[32mname\u001B[0m: %s, \u001B[36memail\u001B[0m: %s)".formatted(name, email);
     }
 }
