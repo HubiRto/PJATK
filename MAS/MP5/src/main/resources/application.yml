@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: MP5
+  datasource:
+    url: jdbc:h2:file:./data/db
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+server:
+  port: 8080
